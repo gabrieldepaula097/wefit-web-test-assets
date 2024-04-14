@@ -10,10 +10,6 @@ export type SearchProps = {
   movies?: Array<SearchResult> | null
 }
 
-// { name = 'React Boilerlate' }: HomeProps
-
-
-
 const Search = ({movies}: SearchProps) => {
   return (
     <SearchWrapper>

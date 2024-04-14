@@ -1,5 +1,6 @@
 import Search from 'components/Search';
 import useFetch from '../../api/useFetch';
+import Spinner from 'components/Spinner';
 
 
 const Home = () => {
@@ -7,7 +8,7 @@ const Home = () => {
 
   return(
   <>
-    {isPending}
+    {isPending && <Spinner/>}
     {movies && <Search movies={movies} ></Search>}
   </>
   )
