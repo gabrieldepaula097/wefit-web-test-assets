@@ -39,13 +39,13 @@ const SearchBar = styled.input`
 
 const SearchIcon = styled.img`
   ${({theme}) => css`
+    cursor: pointer;
     height: 24px;
     width: 24px;
-    padding: ${theme.spacings.xxsmall};
     position: absolute;
     box-sizing: border-box;
     top: 50%;
-    right: ${theme.spacings.xxsmall};
+    right: ${theme.spacings.small};
     transform: translateY(-50%);
   `}
 `
@@ -74,6 +74,12 @@ const MovieCard = styled.div`
     justify-content: flex-start;
     padding: ${theme.spacings.medium};
     width: 32%;
+    margin-bottom: 16px;
+    margin-right: 12px; //Todo: MUDAR
+    
+    .movie:nth-oft-ype(3n) {
+      margin-right: 0px;
+    }
   `}
 `
 
@@ -111,9 +117,7 @@ const MoviePrice = styled.span`
 const MoviesContainer = styled.div`
   align-items: flex-start;
   display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  row-gap: 16px;
+  flex-wrap: wrap;  
   width: 100%;
 `
 
