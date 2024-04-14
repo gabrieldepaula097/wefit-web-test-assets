@@ -1,6 +1,5 @@
 To run project
   - `yarn && yarn install`
-  - ``
 
 🔨 Commands
 - `yarn dev`: runs your application on `localhost:3000`
