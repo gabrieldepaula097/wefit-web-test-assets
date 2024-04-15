@@ -34,10 +34,8 @@ const Search = ({movies}: SearchProps) => {
 
   const handleClick = (movie: SearchResult) => {
     let findMovie = movieList?.find((movieSaved: SearchResult) => movieSaved.id === movie.id)
-    console.log({findMovie})
 
     if(findMovie !== undefined){
-      console.log('já tem');
       return dispatch(sumMovie(findMovie))
     }
 

@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { AmountContainer, AmountCounter, AmountCounterContainer, CartContainer, CartWrapper, FooterCart, HeaderComplement, HeaderText, IconCart, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, SeparatorCart, SubTotal, SubTotalContainer, TotalAmount, TotalContainer, TotalName, TrashContainer } from "./styles"
+import { AmountContainer, AmountCounter, AmountCounterContainer, CartContainer, CartWrapper, FooterCart, HeaderComplement, HeaderText, IconCart, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, Row, RowContainer, SeparatorCart, SubTotal, SubTotalContainer, TotalAmount, TotalContainer, TotalName, TrashContainer } from "./styles"
 
 import MinusIcon from '../../assets/minus.svg';
 import PlusIcon from '../../assets/plus.svg';
 import TrashIcon from '../../assets/trash.svg'
 import Button from "components/Button";
+import { useSelector } from "react-redux";
+import { RootState } from "redux";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -12,6 +14,9 @@ const Cart = () => {
     navigate("/purchase");
   }
 
+  const movieList = useSelector((state: RootState) => state.cart.movies)
+  const totalPrice = useSelector((state: RootState) => state.cart.totalPrice)
+  
   return (
     <CartWrapper>
       <CartContainer>
@@ -20,35 +25,39 @@ const Cart = () => {
         <HeaderText>SUBTOTAL</HeaderText>
         <HeaderComplement />
       </CartContainer>
-      <CartContainer>
+      <RowContainer>
+      {movieList && movieList.map((movie: IMovie) =>
+      <Row key={movie.id}>
         <ProductContainer>
-          <ProductImage src="https://via.placeholder.com/91x114" />
+          <ProductImage src={movie.image} />
           <ProductInfo>
-            <ProductName>Homem Aranha</ProductName>
-            <ProductPrice>R$ 29,99</ProductPrice>
+            <ProductName>{movie.title}</ProductName>
+            <ProductPrice>R$ {movie.price}</ProductPrice>
           </ProductInfo>
         </ProductContainer>
         <AmountContainer>
           <IconCart src={MinusIcon} />
           <AmountCounterContainer>
-            <AmountCounter>1</AmountCounter>
+            <AmountCounter>{movie.count}</AmountCounter>
           </AmountCounterContainer>
           <IconCart src={PlusIcon}/>
         </AmountContainer>
         <SubTotalContainer>
-          <SubTotal>R$ 29,99</SubTotal>
+          <SubTotal>R$ {movie.count * movie.price}</SubTotal>
         </SubTotalContainer>
         <TrashContainer>
           <IconCart src={TrashIcon}  />
         </TrashContainer>
-      </CartContainer>
+        </Row>
+      )}
+      </RowContainer>
       <SeparatorCart />
 
       <FooterCart>
         <Button height="34" text="FINALIZAR PEDIDO" width="173" onClick={handleClick} />
           <TotalContainer>
             <TotalName>TOTAL</TotalName>
-            <TotalAmount>R$ 29,90</TotalAmount>
+            <TotalAmount>R$ {totalPrice}</TotalAmount>
           </TotalContainer>
       </FooterCart>
     </CartWrapper>
