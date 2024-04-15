@@ -25,6 +25,7 @@ const Name = styled(Link)`
 const Cart = styled.div`
   ${({ theme }) => css`
     align-items: center;
+    cursor: pointer;
     display: flex;
     gap: ${theme.spacings.xsmall};
     justify-content: flex-start;
@@ -33,7 +34,6 @@ const Cart = styled.div`
 
 const Label = styled.div`
   align-items: flex-end;
-  cursor: pointer;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-start;

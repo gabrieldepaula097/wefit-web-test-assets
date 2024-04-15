@@ -37,9 +37,24 @@ export const movieSlice = createSlice({
         }
         return movie
       })
+    },
+    removeMovie: (state, action: PayloadAction<IMovie>) => {
+        state.movies = state.movies.filter((movie) => movie.id !== action.payload.id)
+        state.totalItems = state.totalItems - action.payload.count
+        state.totalPrice = Number((state.totalPrice).toFixed(2)) - Number((action.payload.price * action.payload.count).toFixed(2))
+    },
+    subMovie: (state, action: PayloadAction<IMovie>) => {
+      state.movies = state.movies.map((movie) => {
+        if(movie.id === action.payload.id){
+          movie.count = movie.count - 1
+          state.totalItems = state.totalItems - 1
+          state.totalPrice = Number((state.totalPrice).toFixed(2)) - Number((action.payload.price).toFixed(2))
+        }
+        return movie
+      })
     }
   }
 })
 
-export const { addMovie, sumMovie } = movieSlice.actions
+export const { addMovie, sumMovie, removeMovie, subMovie } = movieSlice.actions
 export default movieSlice.reducer

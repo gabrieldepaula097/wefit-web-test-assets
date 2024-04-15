@@ -23,8 +23,8 @@ const Header = () => {
         WeMovies
       </Name>
 
-      <Cart>
-        <Label onClick={handleClick}>
+      <Cart onClick={handleClick}>
+        <Label>
           <CartText>
             Meu Carrinho
           </CartText>

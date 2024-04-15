@@ -5,18 +5,19 @@ import MinusIcon from '../../assets/minus.svg';
 import PlusIcon from '../../assets/plus.svg';
 import TrashIcon from '../../assets/trash.svg'
 import Button from "components/Button";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "redux";
+import { removeMovie, subMovie, sumMovie } from "redux/MovieReducer";
 
 const Cart = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/purchase");
   }
-
   const movieList = useSelector((state: RootState) => state.cart.movies)
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice)
-  
+
   return (
     <CartWrapper>
       <CartContainer>
@@ -36,17 +37,17 @@ const Cart = () => {
           </ProductInfo>
         </ProductContainer>
         <AmountContainer>
-          <IconCart src={MinusIcon} />
+          <IconCart src={MinusIcon} onClick={dispatch(subMovie(movie))} />
           <AmountCounterContainer>
             <AmountCounter>{movie.count}</AmountCounter>
           </AmountCounterContainer>
-          <IconCart src={PlusIcon}/>
+          <IconCart src={PlusIcon} onClick={dispatch(sumMovie(movie))}/>
         </AmountContainer>
         <SubTotalContainer>
           <SubTotal>R$ {movie.count * movie.price}</SubTotal>
         </SubTotalContainer>
         <TrashContainer>
-          <IconCart src={TrashIcon}  />
+          <IconCart src={TrashIcon} onClick={dispatch(removeMovie(movie))} />
         </TrashContainer>
         </Row>
       )}
