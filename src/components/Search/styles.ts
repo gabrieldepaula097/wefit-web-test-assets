@@ -127,6 +127,7 @@ const AddToCart = styled.button`
     background: ${theme.colors.buttonBlue};
     border: none;
     border-radius: ${theme.spacings.xxsmall};
+    cursor: pointer
     display: inline-flex;
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.xsmall};

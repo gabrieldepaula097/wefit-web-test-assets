@@ -1,7 +1,10 @@
-import { MouseEvent, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { AddToCart, CartCounter, IconButton, IconContainer, MovieCard, MovieImg, MovieInfo, MovieName, MoviePrice, MoviesContainer, SearchBar, SearchBarWrapper, SearchIcon, SearchResult, SearchWrapper } from "./styles"
 import iconSearch from '../../assets/search.svg'
 import iconAddToCart from '../../assets/addToCart.svg'
+import { useDispatch, useSelector } from "react-redux";
+import { addMovie, sumMovie } from "../../redux/MovieReducer";
+import { RootState } from "redux";
 
 export type SearchResult = {
   title: string; price: number; id: string; image: string
@@ -12,6 +15,9 @@ export type SearchProps = {
 }
 
 const Search = ({movies}: SearchProps) => {
+  const dispatch = useDispatch();
+  const movieList = useSelector((state: RootState) => state.cart.movies)
+
   const [filteredMovies, setFilteredMovies] = useState(movies);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -26,11 +32,31 @@ const Search = ({movies}: SearchProps) => {
     setFilteredMovies(filtered);
   };
 
+  const handleClick = (movie: SearchResult) => {
+    let findMovie = movieList?.find((movieSaved: SearchResult) => movieSaved.id === movie.id)
+    console.log({findMovie})
+
+    if(findMovie !== undefined){
+      console.log('já tem');
+      return dispatch(sumMovie(findMovie))
+    }
+
+    let movieToSend = {
+      title: movie.title,
+      price: movie.price,
+      id: movie.id,
+      image: movie.image,
+      count: 1
+    }
+
+    return dispatch(addMovie(movieToSend)) 
+}
+
   return (
     <SearchWrapper>
       <SearchBarWrapper>
-        <SearchBar type="text" placeholder="Buscar filme pelo nome" onChange={handleOnChange} onBlur={() => handleFilter(searchTerm, movies)} value={searchTerm} />
-        <SearchIcon src={iconSearch} onClick={() => handleFilter(searchTerm, movies)} />
+        <SearchBar type="search" placeholder="Buscar filme pelo nome" value={searchTerm} />
+        <SearchIcon src={iconSearch} />
       </SearchBarWrapper>
       <SearchResult>
         <MoviesContainer>
@@ -41,7 +67,7 @@ const Search = ({movies}: SearchProps) => {
               <MovieName>{movie.title}</MovieName>
               <MoviePrice>R$ {movie.price}</MoviePrice>
             </MovieInfo>
-            <AddToCart>
+            <AddToCart onClick={() => handleClick(movie)}>
               <IconContainer>
                 <IconButton src={iconAddToCart} />
                 <CartCounter>0</CartCounter>

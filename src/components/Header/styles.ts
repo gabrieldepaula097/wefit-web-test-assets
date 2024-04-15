@@ -33,6 +33,7 @@ const Cart = styled.div`
 
 const Label = styled.div`
   align-items: flex-end;
+  cursor: pointer;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-start;

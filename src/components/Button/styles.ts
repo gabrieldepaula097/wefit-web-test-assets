@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 const ButtonStyled = styled.button<{ height: string; width?: string; }>`
   align-items: center;
   border: none;
+  cursor: pointer;
   display: inline-flex;
   font-weight: bold;
   height: ${props => props.height}px;

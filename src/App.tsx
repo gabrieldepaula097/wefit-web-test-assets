@@ -12,7 +12,7 @@ import Cart from 'components/Cart';
 import PurchaseMade from 'pages/PurchaseMade';
 
 export default function App() {
-
+  
   let routes: RouteObject[] = [
     {
       path: "/",
@@ -30,7 +30,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      {element}
+        {element}
     </ThemeProvider>
   )
 }
