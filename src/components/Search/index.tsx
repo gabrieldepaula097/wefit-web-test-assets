@@ -1,13 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AddToCart, CartCounter, IconButton, IconContainer, MovieCard, MovieImg, MovieInfo, MovieName, MoviePrice, MoviesContainer, SearchBar, SearchBarWrapper, SearchIcon, SearchResult, SearchWrapper } from "./styles"
 import iconSearch from '../../assets/search.svg'
 import iconAddToCart from '../../assets/addToCart.svg'
 import { useDispatch, useSelector } from "react-redux";
-import { FilteredMovies, addMovie, setFilteredMovies, setSearchTerm, sumMovie } from "../../redux/MovieReducer";
+import { addMovie, setFilteredMovies, setSearchTerm, sumMovie } from "../../redux/MovieReducer";
 import { RootState } from "redux";
 import { useLocation, useNavigationType, useSearchParams } from "react-router-dom";
 import useFetch from "api/useFetch";
 import Spinner from "components/Spinner";
+import NotFound from "pages/NotFound";
 
 export type Movie = {
   title: string; price: number; id: string; image: string
@@ -23,6 +24,8 @@ const Search = () => {
   const filteredMovies = useSelector((state: RootState) => state.cart.filteredMovies)
 
   const [searchParams, setSearchParams] = useSearchParams()
+
+  const [noResult, setNoResult] = useState(false)
 
   const { data: movies, isPending, error } = useFetch('http://localhost:8000/products')
 
@@ -43,6 +46,7 @@ const Search = () => {
     }
   }, [location])
   
+  
 
   const handleOnChange = (event: { target: { value: string; }; }) => {
     dispatch(setSearchTerm(event.target.value))
@@ -56,6 +60,11 @@ const Search = () => {
     } else {
       const search = searchParams.get('search')
       filtered = movies?.filter((movie: Movie) => movie.title.toUpperCase().includes(search.toUpperCase()));
+    }
+    if(filtered?.length === 0){
+      setNoResult(true)
+    } else {
+      setNoResult(false)
     }
     dispatch(setFilteredMovies(filtered))
   };
@@ -81,13 +90,12 @@ const Search = () => {
 
   return (
     <>
-    
     <SearchWrapper>
       <SearchBarWrapper>
         <SearchBar type="text" placeholder="Buscar filme pelo nome" onChange={handleOnChange} onBlur={() => handleFilter(false)} value={searchTerm} />
         <SearchIcon src={iconSearch} onClick={() => handleFilter(false)} />
       </SearchBarWrapper>
-      {(isPending || filteredMovies?.length < 1) && <Spinner />}
+      {(isPending || filteredMovies?.length < 1 && !noResult) && <Spinner />}
       {movies && filteredMovies && <SearchResult>
         <MoviesContainer>
         {filteredMovies && filteredMovies.map((movie: Movie) => 
@@ -108,6 +116,7 @@ const Search = () => {
         )}
         </MoviesContainer>
       </SearchResult>}
+      {noResult && <NotFound />}
     </SearchWrapper>
     </>
   )
