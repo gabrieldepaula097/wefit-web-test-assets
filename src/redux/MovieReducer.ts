@@ -52,9 +52,14 @@ export const movieSlice = createSlice({
         }
         return movie
       })
+    },
+    purchaseCompleted: (state, action: PayloadAction<MovieInitialState>) => {
+      state.movies = action.payload.movies
+      state.totalItems = action.payload.totalItems
+      state.totalPrice = action.payload.totalPrice
     }
   }
 })
 
-export const { addMovie, sumMovie, removeMovie, subMovie } = movieSlice.actions
+export const { addMovie, sumMovie, removeMovie, subMovie, purchaseCompleted } = movieSlice.actions
 export default movieSlice.reducer

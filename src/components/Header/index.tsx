@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 import { Cart, CartItems, CartText, Container, Label, Name } from "./styles"
 import CartIcon from '@/assets/cart.svg'
 import { useSelector } from "react-redux";
@@ -10,11 +8,6 @@ export type HeaderProps = {
 }
 
 const Header = () => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/cart");
-  }
-
   const totalItems = useSelector((state: RootState) => state.cart.totalItems)
 
   return (
@@ -23,7 +16,7 @@ const Header = () => {
         WeMovies
       </Name>
 
-      <Cart onClick={handleClick}>
+      <Cart to="/cart">
         <Label>
           <CartText>
             Meu Carrinho

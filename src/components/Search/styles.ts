@@ -73,13 +73,7 @@ const MovieCard = styled.div`
     gap: ${theme.spacings.medium};
     justify-content: flex-start;
     padding: ${theme.spacings.medium};
-    width: 32%;
-    margin-bottom: 16px;
-    margin-right: 12px; //Todo: MUDAR
-    
-    .movie:nth-oft-ype(3n) {
-      margin-right: 0px;
-    }
+    width: 100%;
   `}
 `
 
@@ -115,9 +109,11 @@ const MoviePrice = styled.span`
 `
 
 const MoviesContainer = styled.div`
-  align-items: flex-start;
-  display: inline-flex;
-  flex-wrap: wrap;  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
   width: 100%;
 `
 
@@ -127,7 +123,7 @@ const AddToCart = styled.button`
     background: ${theme.colors.buttonBlue};
     border: none;
     border-radius: ${theme.spacings.xxsmall};
-    cursor: pointer
+    cursor: pointer;
     display: inline-flex;
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.xsmall};

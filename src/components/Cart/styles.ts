@@ -15,35 +15,46 @@ const CartWrapper = styled.div`
 `
 
 const CartContainer = styled.div`
-  align-items: flex-start;
-  display: inline-flex;
-  justify-content: space-between;
   width: 100%;
+  display: grid;
+  grid-template-columns: 3fr repeat(3, 2fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 16px;
 `
 
-const RowContainer = styled(CartContainer)`
-  flex-direction: column;
-  gap: 16px;
-`
 const Row = styled.div`
-  align-items: center;
-  display: inline-flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 3fr repeat(3, 2fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 16px;
+  grid-row-gap: 16px;
   width: 100%;
 `
 const HeaderText = styled.span`
   ${({theme}) => css`
+    align-items: center;
     color: ${theme.colors.grey};
+    display: flex;
     font-size: ${theme.font.sizes.small};
     font-weight: bold;
     word-wrap: break-word;
   `}
 `
 
+const AmountText = styled(HeaderText)`
+  justify-content: flex-start;
+`
+
+const SubTotalText = styled(HeaderText)`
+  justify-content: flex-end;
+`
+
 const HeaderComplement = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   background: transparent;
   height: 18px;
-  width: 18px;
 `
 
 const ProductContainer = styled.div`
@@ -51,7 +62,7 @@ const ProductContainer = styled.div`
     align-items: center;
     display: flex;
     gap: ${theme.spacings.medium};
-    justify-content: space-between;
+    justify-content: flex-start;
   `}
 `
 const ProductImage = styled.img`
@@ -127,7 +138,7 @@ const SubTotalContainer = styled.div`
   align-items: center;
   display: inline-flex;
   height: 100%;
-  justify-content: flex-start;
+  justify-content: flex-end;
 `
 
 const SubTotal = styled.span`
@@ -147,9 +158,8 @@ const TrashContainer = styled.div`
     align-items: center;
     display: flex;
     height: 100%;
-    justify-content: center;
+    justify-content: flex-end;
     padding: ${theme.spacings.xxsmall};
-    width: 24px; 
   `}
 `
 
@@ -196,4 +206,4 @@ const TotalAmount = styled.span`
     word-wrap: break-word;
   `}
 `
-export {CartContainer, CartWrapper, HeaderText, HeaderComplement, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, AmountContainer, IconCart, AmountCounterContainer, AmountCounter, SubTotal, SubTotalContainer, TrashContainer, SeparatorCart, FooterCart, TotalContainer, TotalName, TotalAmount, RowContainer, Row}
+export {CartContainer, CartWrapper, HeaderText, HeaderComplement, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, AmountContainer, IconCart, AmountCounterContainer, AmountCounter, SubTotal, SubTotalContainer, TrashContainer, SeparatorCart, FooterCart, TotalContainer, TotalName, TotalAmount, Row, AmountText, SubTotalText}

@@ -22,13 +22,14 @@ const Name = styled(Link)`
     word-wrap: break-word;
   `}
 `
-const Cart = styled.div`
+const Cart = styled(Link)`
   ${({ theme }) => css`
     align-items: center;
     cursor: pointer;
     display: flex;
     gap: ${theme.spacings.xsmall};
     justify-content: flex-start;
+    text-decoration: none;
   `}
 `
 

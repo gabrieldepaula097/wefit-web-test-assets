@@ -63,7 +63,7 @@ const Search = ({movies}: SearchProps) => {
             <MovieInfo>
               <MovieImg src={movie.image} />
               <MovieName>{movie.title}</MovieName>
-              <MoviePrice>R$ {movie.price}</MoviePrice>
+              <MoviePrice>R$ {(movie.price).toFixed(2)}</MoviePrice>
             </MovieInfo>
             <AddToCart onClick={() => handleClick(movie)}>
               <IconContainer>
