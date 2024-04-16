@@ -1,14 +1,14 @@
-import { SearchResult } from 'components/Search';
+import { Movie } from 'components/Search';
 import { useState, useEffect } from 'react';
 
 interface UseFetchResult {
-    data: Array<SearchResult> | null;
+    data: Array<Movie> | undefined;
     isPending: boolean;
     error: any | null;
 }
 
 const useFetch = (url: string): UseFetchResult => {
-  const [data, setData] = useState<Array<SearchResult> | null>(null);
+  const [data, setData] = useState<Array<Movie> | undefined>(undefined);
   const [isPending, setIsPending] = useState<boolean>(true);
   const [error, setError] = useState<any | null>(null);
 

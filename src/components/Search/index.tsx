@@ -1,39 +1,67 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { AddToCart, CartCounter, IconButton, IconContainer, MovieCard, MovieImg, MovieInfo, MovieName, MoviePrice, MoviesContainer, SearchBar, SearchBarWrapper, SearchIcon, SearchResult, SearchWrapper } from "./styles"
 import iconSearch from '../../assets/search.svg'
 import iconAddToCart from '../../assets/addToCart.svg'
 import { useDispatch, useSelector } from "react-redux";
-import { addMovie, sumMovie } from "../../redux/MovieReducer";
+import { FilteredMovies, addMovie, setFilteredMovies, setSearchTerm, sumMovie } from "../../redux/MovieReducer";
 import { RootState } from "redux";
+import { useLocation, useNavigationType, useSearchParams } from "react-router-dom";
+import useFetch from "api/useFetch";
+import Spinner from "components/Spinner";
 
-export type SearchResult = {
+export type Movie = {
   title: string; price: number; id: string; image: string
 }
 
-export type SearchProps = {
-  movies?: Array<SearchResult> | undefined
-}
-
-const Search = ({movies}: SearchProps) => {
+const Search = () => {
   const dispatch = useDispatch();
-  const movieList = useSelector((state: RootState) => state.cart.movies)
+  const location = useLocation();
+  const navType = useNavigationType();
 
-  const [filteredMovies, setFilteredMovies] = useState(movies);
-  const [searchTerm, setSearchTerm] = useState('');
+  const searchTerm = useSelector((state: RootState) => state.cart.searchTerm)
+  const movieList = useSelector((state: RootState) => state.cart.movies)
+  const filteredMovies = useSelector((state: RootState) => state.cart.filteredMovies)
+
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const { data: movies, isPending, error } = useFetch('http://localhost:8000/products')
+
+
+  useEffect(() => {
+    if(!isPending){
+      handleFilter(false)
+    }
+  }, [isPending])
+
+  useEffect(() => {
+    if((navType === "POP")) {
+      const back = searchParams.get('search')
+      if(back){
+        dispatch(setSearchTerm(back))
+        handleFilter(true)
+      }
+    }
+  }, [location])
+  
 
   const handleOnChange = (event: { target: { value: string; }; }) => {
-    setSearchTerm(event.target.value);
+    dispatch(setSearchTerm(event.target.value))
  };
 
-  const handleFilter = (searchTerm: string, movies: Array<SearchResult> | undefined) => {
-    const value = searchTerm.toUpperCase();
-    console.log({value, movies});
-    const filtered = movies?.filter(movie => movie.title.toUpperCase().includes(value));
-    setFilteredMovies(filtered);
+  const handleFilter = (back: boolean) => {
+    let filtered: Movie[] | undefined = []
+    if(!back){
+      setSearchParams({ search: searchTerm})
+      filtered = movies?.filter((movie: Movie) => movie.title.toUpperCase().includes(searchTerm.toUpperCase()));
+    } else {
+      const search = searchParams.get('search')
+      filtered = movies?.filter((movie: Movie) => movie.title.toUpperCase().includes(search.toUpperCase()));
+    }
+    dispatch(setFilteredMovies(filtered))
   };
 
-  const handleClick = (movie: SearchResult) => {
-    let findMovie = movieList?.find((movieSaved: SearchResult) => movieSaved.id === movie.id)
+  const handleClick = (movie: Movie) => {
+    let findMovie = movieList?.find((movieSaved: Movie) => movieSaved.id === movie.id)
 
     if(findMovie !== undefined){
       return dispatch(sumMovie(findMovie))
@@ -48,17 +76,21 @@ const Search = ({movies}: SearchProps) => {
     }
 
     return dispatch(addMovie(movieToSend)) 
-}
+  }
+
 
   return (
+    <>
+    
     <SearchWrapper>
       <SearchBarWrapper>
-        <SearchBar type="search" placeholder="Buscar filme pelo nome" value={searchTerm} />
-        <SearchIcon src={iconSearch} />
+        <SearchBar type="text" placeholder="Buscar filme pelo nome" onChange={handleOnChange} onBlur={() => handleFilter(false)} value={searchTerm} />
+        <SearchIcon src={iconSearch} onClick={() => handleFilter(false)} />
       </SearchBarWrapper>
-      <SearchResult>
+      {(isPending || filteredMovies?.length < 1) && <Spinner />}
+      {movies && filteredMovies && <SearchResult>
         <MoviesContainer>
-        {filteredMovies && filteredMovies.map((movie: { title: string, price: number, id: string, image: string }) => 
+        {filteredMovies && filteredMovies.map((movie: Movie) => 
           <MovieCard key={movie.id} className="movie">
             <MovieInfo>
               <MovieImg src={movie.image} />
@@ -75,8 +107,9 @@ const Search = ({movies}: SearchProps) => {
           </MovieCard>
         )}
         </MoviesContainer>
-      </SearchResult>
+      </SearchResult>}
     </SearchWrapper>
+    </>
   )
 }
 

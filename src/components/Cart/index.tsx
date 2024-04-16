@@ -45,7 +45,7 @@ const Cart = () => {
         <HeaderComplement />
       </CartContainer>
 
-      {movieList && movieList.map((movie: IMovie) =>
+      {movieList.map((movie: IMovie) =>
       <Row key={movie.id}>
         <ProductContainer>
           <ProductImage src={movie.image} />

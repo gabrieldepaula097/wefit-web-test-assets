@@ -19,6 +19,7 @@ export default {
     base: '#2F2E41',
     blue: '#3F3D56',
     buttonBlue: '#009EDD',
+    buttonGreen: '#039B00',
     grey: '#999999',
     grey2: '#D9D9D9',
     textMovie: '#333333',

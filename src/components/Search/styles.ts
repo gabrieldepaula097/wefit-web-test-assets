@@ -135,6 +135,10 @@ const AddToCart = styled.button`
     text-align: center;
     width: 100%;
     word-wrap: break-word;
+
+    &:focus {
+      background: ${theme.colors.buttonGreen};
+    }
   `}
 `
 

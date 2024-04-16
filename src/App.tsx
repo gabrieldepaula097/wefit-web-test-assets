@@ -10,16 +10,21 @@ import NotFound from 'pages/NotFound';
 import Home from 'pages/Home';
 import Cart from 'components/Cart';
 import PurchaseMade from 'pages/PurchaseMade';
+import { useSelector } from 'react-redux';
+import { RootState } from 'redux';
+import Search from 'components/Search';
 
 export default function App() {
-  
+  const totalPrice = useSelector((state: RootState) => state.cart.totalItems)
+
   let routes: RouteObject[] = [
     {
       path: "/",
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: '/cart', element: <Cart />},
+        { path: '/search', element: <Search /> },
+        { path: '/cart', element: totalPrice > 0 ? <Cart /> : <NotFound />},
         { path: '/purchase', element: <PurchaseMade />},
         { path: "*", element: <NotFound /> },
       ],

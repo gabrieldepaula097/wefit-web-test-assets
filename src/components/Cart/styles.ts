@@ -9,6 +9,7 @@ const CartWrapper = styled.div`
     flex-direction: column;
     gap: ${theme.spacings.large};
     justify-content: flex-start;
+    margin-bottom: ${theme.spacings.xxlarge};
     padding: ${theme.spacings.large}; 
     width: 100%;
   `}
