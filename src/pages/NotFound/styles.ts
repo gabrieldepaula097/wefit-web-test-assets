@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const WrapperNotFound = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     background-color: white;
     border-radius: ${theme.spacings.xxsmall};
@@ -11,7 +11,7 @@ const WrapperNotFound = styled.div`
     height: 100%;
     justify-content: center;
     margin-bottom: ${theme.spacings.xxlarge};
-    padding: ${theme.spacings.mega}; 
+    padding: ${theme.spacings.mega};
     width: 100%;
   `}
 `
@@ -23,7 +23,7 @@ const ContainerNotFound = styled.div`
 `
 
 const TextNotFound = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.large};
     font-weight: bold;
@@ -42,7 +42,7 @@ const ImgContainer = styled.div`
 `
 
 const Separator = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     background-color: ${theme.colors.blue};
     height: 1.36px;
     margin-bottom: ${theme.spacings.large};
@@ -50,5 +50,10 @@ const Separator = styled.div`
   `}
 `
 
-export {ContainerNotFound, ImgContainer, TextNotFound, WrapperNotFound, Separator}
-
+export {
+  ContainerNotFound,
+  ImgContainer,
+  TextNotFound,
+  WrapperNotFound,
+  Separator
+}

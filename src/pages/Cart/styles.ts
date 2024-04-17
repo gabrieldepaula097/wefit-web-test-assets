@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 
 const CartWrapper = styled.div`
-  ${({theme}) => css`
-    alignItems: flex-start;
+  ${({ theme }) => css`
+    alignitems: flex-start;
     background: ${theme.colors.white};
     border-radius: ${theme.spacings.xxsmall};
     display: inline-flex;
@@ -10,7 +10,7 @@ const CartWrapper = styled.div`
     gap: ${theme.spacings.large};
     justify-content: flex-start;
     margin-bottom: ${theme.spacings.xxlarge};
-    padding: ${theme.spacings.large}; 
+    padding: ${theme.spacings.large};
     width: 100%;
   `}
 `
@@ -32,7 +32,7 @@ const Row = styled.div`
   width: 100%;
 `
 const HeaderText = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     color: ${theme.colors.grey};
     display: flex;
@@ -59,7 +59,7 @@ const HeaderComplement = styled.div`
 `
 
 const ProductContainer = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     display: flex;
     gap: ${theme.spacings.medium};
@@ -72,7 +72,7 @@ const ProductImage = styled.img`
 `
 
 const ProductInfo = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: flex-start;
     display: inline-flex;
     flex-direction: column;
@@ -82,7 +82,7 @@ const ProductInfo = styled.div`
 `
 
 const ProductName = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.small};
     font-weight: bold;
@@ -91,7 +91,7 @@ const ProductName = styled.span`
 `
 
 const ProductPrice = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.medium};
     font-weight: bold;
@@ -113,7 +113,7 @@ const IconCart = styled.img`
 `
 
 const AmountCounterContainer = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     border: 1px ${theme.colors.grey2} solid;
     border-radius: ${theme.spacings.xxsmall};
@@ -127,7 +127,7 @@ const AmountCounterContainer = styled.div`
 `
 
 const AmountCounter = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.regular};
@@ -144,7 +144,7 @@ const SubTotalContainer = styled.div`
 `
 
 const SubTotal = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     color: ${theme.colors.base};
     display: inline-flex;
@@ -156,7 +156,7 @@ const SubTotal = styled.span`
 `
 
 const TrashContainer = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     display: flex;
     height: 100%;
@@ -166,7 +166,7 @@ const TrashContainer = styled.div`
 `
 
 const SeparatorCart = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     background: ${theme.colors.grey};
     height: 1px;
     width: 100%;
@@ -181,7 +181,7 @@ const FooterCart = styled.div`
 `
 
 const TotalContainer = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     display: flex;
     gap: ${theme.spacings.large};
@@ -189,7 +189,7 @@ const TotalContainer = styled.div`
   `}
 `
 const TotalName = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.grey};
     font-size: ${theme.font.sizes.small};
     font-weight: 700;
@@ -200,7 +200,7 @@ const TotalName = styled.span`
 `
 
 const TotalAmount = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.xlarge};
     font-weight: bold;
@@ -210,4 +210,29 @@ const TotalAmount = styled.span`
   `}
 `
 
-export {CartContainer, CartWrapper, HeaderText, HeaderComplement, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, AmountContainer, IconCart, AmountCounterContainer, AmountCounter, SubTotal, SubTotalContainer, TrashContainer, SeparatorCart, FooterCart, TotalContainer, TotalName, TotalAmount, Row, AmountText, SubTotalText}
+export {
+  CartContainer,
+  CartWrapper,
+  HeaderText,
+  HeaderComplement,
+  ProductContainer,
+  ProductImage,
+  ProductInfo,
+  ProductName,
+  ProductPrice,
+  AmountContainer,
+  IconCart,
+  AmountCounterContainer,
+  AmountCounter,
+  SubTotal,
+  SubTotalContainer,
+  TrashContainer,
+  SeparatorCart,
+  FooterCart,
+  TotalContainer,
+  TotalName,
+  TotalAmount,
+  Row,
+  AmountText,
+  SubTotalText
+}

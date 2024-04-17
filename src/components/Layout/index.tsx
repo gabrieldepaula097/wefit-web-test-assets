@@ -1,10 +1,13 @@
-import Header from "components/Header"
-import { Container, Wrapper } from "./styles"
-import { Outlet } from "react-router-dom"
-import useDeviceDetection from 'utils/useDeviceDetection';
+import { Outlet } from 'react-router-dom'
+
+import Header from 'components/Header'
+
+import useDeviceDetection from 'utils/useDeviceDetection'
+
+import { Container, Wrapper } from './styles'
 
 const Layout = () => {
-  const isMobile = useDeviceDetection();
+  const isMobile = useDeviceDetection()
 
   return (
     <Wrapper isMobile={isMobile}>

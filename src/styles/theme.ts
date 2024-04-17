@@ -1,7 +1,6 @@
 export default {
   font: {
-    family:
-      "'Open Sans', 'Helvetica Neue', sans-serif",
+    family: "'Open Sans', 'Helvetica Neue', sans-serif",
     regular: 400,
     medium: 500,
     semiBold: 600,
@@ -23,7 +22,7 @@ export default {
     grey: '#999999',
     grey2: '#D9D9D9',
     textMovie: '#333333',
-    white: '#FFFFFF',
+    white: '#FFFFFF'
   },
   spacings: {
     xxsmall: '4px',
@@ -34,7 +33,7 @@ export default {
     xlarge: '32px',
     xxlarge: '40px',
     xxxlarge: '48px',
-    mega: '64px',
+    mega: '64px'
   },
   layers: {
     base: 10,

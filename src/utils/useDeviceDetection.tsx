@@ -1,29 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 const useDeviceDetection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const handleDeviceDetection = () => {
-      const userAgent = navigator.userAgent.toLowerCase();
-      const isMobile = /iphone|ipad|ipod|android|blackberry|windows phone/g.test(userAgent);
+      const userAgent = navigator.userAgent.toLowerCase()
+      const isMobile =
+        /iphone|ipad|ipod|android|blackberry|windows phone/g.test(userAgent)
 
       if (isMobile) {
-        setIsMobile(true);
+        setIsMobile(true)
       } else {
-        setIsMobile(false);
+        setIsMobile(false)
       }
-    };
+    }
 
-    handleDeviceDetection();
-    window.addEventListener('resize', handleDeviceDetection);
+    handleDeviceDetection()
+    window.addEventListener('resize', handleDeviceDetection)
 
     return () => {
-      window.removeEventListener('resize', handleDeviceDetection);
-    };
-  }, []);
+      window.removeEventListener('resize', handleDeviceDetection)
+    }
+  }, [])
 
-  return isMobile;
-};
+  return isMobile
+}
 
 export default useDeviceDetection

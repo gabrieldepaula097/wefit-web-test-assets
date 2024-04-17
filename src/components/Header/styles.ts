@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom'
+
 import styled, { css } from 'styled-components'
-import { Link } from "react-router-dom"
 
 const Container = styled.div`
-${({theme}) => css`
-    align-items: center; 
+  ${({ theme }) => css`
+    align-items: center;
     display: inline-flex;
     height: 88px;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding: ${theme.spacings.medium};
     width: 100%;
   `}
@@ -45,12 +46,12 @@ const CartText = styled.span`
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.semiBold};
-    wordWrap: break-word;
+    wordwrap: break-word;
   `}
 `
 
 const CartItems = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.grey};
     font-size: ${theme.font.sizes.xsmall};
     font-weight: ${theme.font.semiBold};
@@ -58,4 +59,4 @@ const CartItems = styled.span`
   `}
 `
 
-export {Cart, CartText, CartItems,  Container, Label, Name}
+export { Cart, CartText, CartItems, Container, Label, Name }

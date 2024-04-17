@@ -1,13 +1,22 @@
-import Button from "components/Button"
-import { ContainerNotFound, ImgContainer, Separator, TextNotFound, WrapperNotFound } from "./styles"
+import { useNavigate } from 'react-router-dom'
+
 import NotFoundImg from '@/assets/notFound.svg'
-import { useNavigate } from "react-router-dom"
+
+import Button from 'components/Button'
+
+import {
+  ContainerNotFound,
+  ImgContainer,
+  Separator,
+  TextNotFound,
+  WrapperNotFound
+} from './styles'
 
 const NotFound = () => {
   const navigate = useNavigate()
   const sendToHome = () => {
-    navigate("/")
-  } 
+    navigate('/')
+  }
   return (
     <WrapperNotFound>
       <ContainerNotFound>
@@ -16,11 +25,15 @@ const NotFound = () => {
           <img src={NotFoundImg} />
         </ImgContainer>
         <Separator />
-        <Button height="40" width="175px" text="Recarregar página" onClick={sendToHome}>
-        </Button>
+        <Button
+          height="40"
+          width="175px"
+          text="Recarregar página"
+          onClick={sendToHome}
+        ></Button>
       </ContainerNotFound>
     </WrapperNotFound>
   )
 }
-  
+
 export default NotFound

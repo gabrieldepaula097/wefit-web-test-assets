@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const SearchWrapper = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     display: inline-flex;
     flex-direction: column;
@@ -14,7 +14,7 @@ const SearchWrapper = styled.div`
 `
 
 const SearchBar = styled.input`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: flex-start;
     background: ${theme.colors.white};
     border-radius: ${theme.spacings.xsmall};
@@ -33,12 +33,11 @@ const SearchBar = styled.input`
       border: 2px ${theme.colors.buttonBlue} solid;
       outline: none;
     }
-  
   `}
 `
 
 const SearchIcon = styled.img`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     cursor: pointer;
     height: 24px;
     width: 24px;
@@ -64,7 +63,7 @@ const SearchResult = styled.div`
 `
 
 const MovieCard = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     background: ${theme.colors.white};
     border-radius: ${theme.spacings.xxsmall};
@@ -78,7 +77,7 @@ const MovieCard = styled.div`
 `
 
 const MovieInfo = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     display: inline-flex;
     flex-direction: column;
@@ -89,7 +88,7 @@ const MovieInfo = styled.div`
 `
 
 const MovieName = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     text-align: 'center',
     color: ${theme.colors.textMovie},
     font-size: ${theme.font.sizes.xsmall};
@@ -99,7 +98,7 @@ const MovieName = styled.span`
 `
 
 const MoviePrice = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     text-align: center;
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.medium};
@@ -108,9 +107,10 @@ const MoviePrice = styled.span`
   `}
 `
 
-const MoviesContainer = styled.div<{isMobile: boolean}>`
+const MoviesContainer = styled.div<{ isMobile: boolean }>`
   display: grid;
-  grid-template-columns: ${props => props.isMobile ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'};
+  grid-template-columns: ${props =>
+    props.isMobile ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'};
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 16px;
   grid-row-gap: 16px;
@@ -118,7 +118,7 @@ const MoviesContainer = styled.div<{isMobile: boolean}>`
 `
 
 const AddToCart = styled.button`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     background: ${theme.colors.buttonBlue};
     border: none;
@@ -150,7 +150,7 @@ const IconContainer = styled.div`
 `
 
 const IconButton = styled.img`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: flex-start;
     display: inline-flex;
     flex-direction: column;
@@ -162,7 +162,7 @@ const IconButton = styled.img`
 `
 
 const CartCounter = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     font-weight: ${theme.font.regular};
     height: 17px;
     left: 17px;
@@ -177,4 +177,20 @@ const MovieImg = styled.img`
   width: 147px;
 `
 
-export { SearchBarWrapper, SearchBar, SearchIcon, SearchResult, SearchWrapper, MovieCard, MovieInfo, MovieName, MoviePrice, AddToCart, IconButton, CartCounter, IconContainer, MovieImg, MoviesContainer }
+export {
+  SearchBarWrapper,
+  SearchBar,
+  SearchIcon,
+  SearchResult,
+  SearchWrapper,
+  MovieCard,
+  MovieInfo,
+  MovieName,
+  MoviePrice,
+  AddToCart,
+  IconButton,
+  CartCounter,
+  IconContainer,
+  MovieImg,
+  MoviesContainer
+}

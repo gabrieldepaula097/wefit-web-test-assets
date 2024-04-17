@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const PurchaseWrapper = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     background-color: white;
     border-radius: ${theme.spacings.xxsmall};
@@ -11,7 +11,7 @@ const PurchaseWrapper = styled.div`
     height: 100%;
     justify-content: center;
     margin-bottom: ${theme.spacings.xxlarge};
-    padding: ${theme.spacings.mega}; 
+    padding: ${theme.spacings.mega};
     width: 100%;
   `}
 `
@@ -23,7 +23,7 @@ const PurchaseContainer = styled.div`
 `
 
 const PurchaseText = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.large};
     font-weight: bold;
@@ -39,4 +39,4 @@ const ImgContainer = styled.div`
   justify-content: flex-start;
 `
 
-export {PurchaseWrapper, PurchaseContainer, PurchaseText, ImgContainer}
+export { PurchaseWrapper, PurchaseContainer, PurchaseText, ImgContainer }

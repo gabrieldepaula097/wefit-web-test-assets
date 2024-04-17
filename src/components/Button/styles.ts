@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-const ButtonStyled = styled.button<{ height: string; width?: string; }>`
+const ButtonStyled = styled.button<{ height: string; width?: string }>`
   align-items: center;
   border: none;
   cursor: pointer;
@@ -8,18 +8,18 @@ const ButtonStyled = styled.button<{ height: string; width?: string; }>`
   font-weight: bold;
   height: ${props => props.height}px;
   justify-content: center;
-  width:  ${props => props.width};
+  width: ${props => props.width};
   text-align: center;
   word-wrap: break-word;
-  
-  ${({theme}) => css`
+
+  ${({ theme }) => css`
     background: ${theme.colors.buttonBlue};
     border-radius: ${theme.spacings.xxsmall};
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.xsmall};
     gap: ${theme.spacings.small};
     padding: ${theme.spacings.xsmall};
-  `}  
+  `}
 `
 
-export {ButtonStyled}
+export { ButtonStyled }

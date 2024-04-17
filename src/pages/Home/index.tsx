@@ -1,43 +1,64 @@
-import useFetch from 'api/useFetch';
-import Spinner from 'components/Spinner';
-import { AddToCart, CartCounter, IconButton, IconContainer, MovieCard, MovieImg, MovieInfo, MovieName, MoviePrice, MoviesContainer, SearchBar, SearchBarWrapper, SearchIcon, SearchResult, SearchWrapper } from "../../components/Search/styles"
-import iconSearch from '../../assets/search.svg'
-import iconAddToCart from '../../assets/addToCart.svg'
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { addMovie, setSearchTerm, sumMovie } from 'redux/MovieReducer';
-import { RootState } from 'redux';
-import { useState } from 'react';
-import { Movie } from 'components/Search';
-import useDeviceDetection from 'utils/useDeviceDetection';
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
+import useFetch from 'api/useFetch'
+import { RootState } from 'redux'
+import { addMovie, setSearchTerm, sumMovie } from 'redux/MovieReducer'
+
+import {
+  AddToCart,
+  CartCounter,
+  IconButton,
+  IconContainer,
+  MovieCard,
+  MovieImg,
+  MovieInfo,
+  MovieName,
+  MoviePrice,
+  MoviesContainer,
+  SearchBar,
+  SearchBarWrapper,
+  SearchIcon,
+  SearchResult,
+  SearchWrapper
+} from '../../components/Search/styles'
+import { Movie } from 'components/Search'
+import Spinner from 'components/Spinner'
+
+import useDeviceDetection from 'utils/useDeviceDetection'
+
+import iconAddToCart from '../../assets/addToCart.svg'
+import iconSearch from '../../assets/search.svg'
 
 const Home = () => {
-  const isMobile = useDeviceDetection();
+  const isMobile = useDeviceDetection()
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const movieList = useSelector((state: RootState) => state.cart.movies)
 
   const [homeSearchTerm, setHomeSearchTerm] = useState('')
-  
-  const handleOnChange = (event: { target: { value: string; }; }) => {
+
+  const handleOnChange = (event: { target: { value: string } }) => {
     setHomeSearchTerm(event.target.value)
-  };
+  }
 
   const handleFilter = () => {
     dispatch(setSearchTerm(homeSearchTerm))
-    navigate("/search");
+    navigate('/search')
   }
 
   const handleClick = (movie: Movie) => {
-    let findMovie = movieList?.find((movieSaved: Movie) => movieSaved.id === movie.id)
+    const findMovie = movieList?.find(
+      (movieSaved: Movie) => movieSaved.id === movie.id
+    )
 
-    if(findMovie !== undefined){
+    if (findMovie !== undefined) {
       return dispatch(sumMovie(findMovie))
     }
 
-    let movieToSend = {
+    const movieToSend = {
       title: movie.title,
       price: movie.price,
       id: movie.id,
@@ -45,12 +66,12 @@ const Home = () => {
       count: 1
     }
 
-    return dispatch(addMovie(movieToSend)) 
+    return dispatch(addMovie(movieToSend))
   }
-  
+
   const getMovieCount = (id: string) => {
     const movie = movieList?.find((movie: IMovie) => movie.id === id)
-    if(movie){
+    if (movie) {
       return movie.count
     }
     return 0
@@ -58,39 +79,45 @@ const Home = () => {
 
   const { data: movies, isPending } = useFetch('http://localhost:8000/products')
 
-  return(
-  <>
-    {isPending && <Spinner/>}
-    {movies && (
-      <SearchWrapper>
-      <SearchBarWrapper>
-        <SearchBar type="text" placeholder="Buscar filme pelo nome" onChange={handleOnChange} onBlur={() => handleFilter()} value={homeSearchTerm} />
-        <SearchIcon src={iconSearch} onClick={() => handleFilter()} />
-      </SearchBarWrapper>
-      <SearchResult>
-        <MoviesContainer isMobile={isMobile}>
-        {movies && movies.map((movie: Movie) => 
-          <MovieCard key={movie.id} className="movie">
-            <MovieInfo>
-              <MovieImg src={movie.image} />
-              <MovieName>{movie.title}</MovieName>
-              <MoviePrice>R$ {(movie.price).toFixed(2)}</MoviePrice>
-            </MovieInfo>
-            <AddToCart onClick={() => handleClick(movie)}>
-              <IconContainer>
-                <IconButton src={iconAddToCart} />
-                <CartCounter>{getMovieCount(movie.id)}</CartCounter>
-              </IconContainer>
-              ADICIONAR AO CARRINHO
-            </AddToCart>
-          </MovieCard>
-        )}
-        </MoviesContainer>
-      </SearchResult>
-    </SearchWrapper>
-
-    )}
-  </>
+  return (
+    <>
+      {isPending && <Spinner />}
+      {movies && (
+        <SearchWrapper>
+          <SearchBarWrapper>
+            <SearchBar
+              type="text"
+              placeholder="Buscar filme pelo nome"
+              onChange={handleOnChange}
+              onBlur={() => handleFilter()}
+              value={homeSearchTerm}
+            />
+            <SearchIcon src={iconSearch} onClick={() => handleFilter()} />
+          </SearchBarWrapper>
+          <SearchResult>
+            <MoviesContainer isMobile={isMobile}>
+              {movies &&
+                movies.map((movie: Movie) => (
+                  <MovieCard key={movie.id} className="movie">
+                    <MovieInfo>
+                      <MovieImg src={movie.image} />
+                      <MovieName>{movie.title}</MovieName>
+                      <MoviePrice>R$ {movie.price.toFixed(2)}</MoviePrice>
+                    </MovieInfo>
+                    <AddToCart onClick={() => handleClick(movie)}>
+                      <IconContainer>
+                        <IconButton src={iconAddToCart} />
+                        <CartCounter>{getMovieCount(movie.id)}</CartCounter>
+                      </IconContainer>
+                      ADICIONAR AO CARRINHO
+                    </AddToCart>
+                  </MovieCard>
+                ))}
+            </MoviesContainer>
+          </SearchResult>
+        </SearchWrapper>
+      )}
+    </>
   )
 }
 

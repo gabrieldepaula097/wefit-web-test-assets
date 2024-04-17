@@ -24,4 +24,4 @@ const SpinnerStyled = styled.div`
   }
 `
 
-export {SpinnerContainer, SpinnerStyled}
+export { SpinnerContainer, SpinnerStyled }

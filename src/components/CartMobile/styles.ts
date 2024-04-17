@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from 'styled-components'
 
 const CartMobileWrapper = styled.div`
   width: 100%;
@@ -26,10 +26,10 @@ const ProductWrapper = styled.div`
   width: 100%;
   height: 82px;
 `
-const ProductPriceContainer =  styled.div`
-  justify-content: flex-start; 
-  align-items: center; 
-  gap: 16px; 
+const ProductPriceContainer = styled.div`
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
   display: flex;
 `
 const ProductContainer = styled.div`
@@ -42,7 +42,7 @@ const ProductContainer = styled.div`
 `
 
 const ProductNameMobile = styled.span`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     color: ${theme.colors.base};
     font-size: ${theme.font.sizes.small};
     font-weight: bold;
@@ -66,9 +66,9 @@ const SubTotalSubtitle = styled.span`
 `
 
 const ValueContainer = styled.div`
-  justify-content: space-between; 
-  align-items: center; 
-  gap: 16px; 
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
   display: flex;
   width: 100%;
 `
@@ -87,7 +87,7 @@ const FooterMobile = styled.div`
   width: 100%;
 `
 const TotalContainerMobile = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     align-items: center;
     display: flex;
     gap: ${theme.spacings.large};
@@ -96,4 +96,17 @@ const TotalContainerMobile = styled.div`
   `}
 `
 
-export {ProductWrapper, ProductContainer, ProductPriceContainer, ProductNameMobile, ValueContainer, SubTotalContainerMobile, SubTotalSubtitle, ProductImageMobile, CartMobileContainer, CartMobileWrapper, FooterMobile, TotalContainerMobile}
+export {
+  ProductWrapper,
+  ProductContainer,
+  ProductPriceContainer,
+  ProductNameMobile,
+  ValueContainer,
+  SubTotalContainerMobile,
+  SubTotalSubtitle,
+  ProductImageMobile,
+  CartMobileContainer,
+  CartMobileWrapper,
+  FooterMobile,
+  TotalContainerMobile
+}

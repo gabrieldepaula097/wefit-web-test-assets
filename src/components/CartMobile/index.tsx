@@ -1,16 +1,47 @@
-import { AmountContainer, AmountCounter, AmountCounterContainer, IconCart, ProductPrice, SeparatorCart, SubTotal, TotalAmount, TotalContainer, TotalName } from "pages/Cart/styles"
-import { useSelector } from "react-redux"
-import { RootState } from "redux"
-import { CartMobileContainer, CartMobileWrapper, FooterMobile, ProductContainer, ProductImageMobile, ProductNameMobile, ProductPriceContainer, ProductWrapper, SubTotalContainerMobile, SubTotalSubtitle, TotalContainerMobile, ValueContainer } from "./styles"
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import MinusIcon from 'assets/minus.svg';
-import PlusIcon from 'assets/plus.svg';
+import MinusIcon from 'assets/minus.svg'
+import PlusIcon from 'assets/plus.svg'
 import TrashIcon from 'assets/trash.svg'
+import { RootState } from 'redux'
+import {
+  purchaseCompleted,
+  removeMovie,
+  subMovie,
+  sumMovie
+} from 'redux/MovieReducer'
 
-import { purchaseCompleted, removeMovie, subMovie, sumMovie } from "redux/MovieReducer"
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom";
-import Button from "components/Button";
+import {
+  AmountContainer,
+  AmountCounter,
+  AmountCounterContainer,
+  IconCart,
+  ProductPrice,
+  SeparatorCart,
+  SubTotal,
+  TotalAmount,
+  TotalContainer,
+  TotalName
+} from 'pages/Cart/styles'
+
+import Button from 'components/Button'
+
+import {
+  CartMobileContainer,
+  CartMobileWrapper,
+  FooterMobile,
+  ProductContainer,
+  ProductImageMobile,
+  ProductNameMobile,
+  ProductPriceContainer,
+  ProductWrapper,
+  SubTotalContainerMobile,
+  SubTotalSubtitle,
+  TotalContainerMobile,
+  ValueContainer
+} from './styles'
 
 const CartMobile = () => {
   const dispatch = useDispatch()
@@ -25,16 +56,15 @@ const CartMobile = () => {
     totalItems: 0,
     searchTerm: '',
     filteredMovies: []
-  } 
-
+  }
 
   const handleClick = () => {
     dispatch(purchaseCompleted(initialState))
-    navigate("/purchase")
+    navigate('/purchase')
   }
 
   const handleMinus = (movie: IMovie) => {
-    if(movie.count !== 1){
+    if (movie.count !== 1) {
       return dispatch(subMovie(movie))
     }
 
@@ -44,47 +74,62 @@ const CartMobile = () => {
   return (
     <>
       <CartMobileWrapper>
-        {movieList.map((movie: IMovie) =>
+        {movieList.map((movie: IMovie) => (
           <CartMobileContainer key={movie.id}>
             <ProductImageMobile src={movie.image} />
             <ProductWrapper>
               <ProductContainer>
                 <ProductNameMobile>{movie.title}</ProductNameMobile>
                 <ProductPriceContainer>
-                  <ProductPrice>R$ {(movie.price).toFixed(2)}</ProductPrice>
+                  <ProductPrice>R$ {movie.price.toFixed(2)}</ProductPrice>
                 </ProductPriceContainer>
-                <IconCart src={TrashIcon} onClick={() => dispatch(removeMovie(movie))} />
+                <IconCart
+                  src={TrashIcon}
+                  onClick={() => dispatch(removeMovie(movie))}
+                />
               </ProductContainer>
               <ValueContainer>
                 <AmountContainer>
-                  <IconCart src={MinusIcon} onClick={() => handleMinus(movie)} />
+                  <IconCart
+                    src={MinusIcon}
+                    onClick={() => handleMinus(movie)}
+                  />
                   <AmountCounterContainer>
                     <AmountCounter>{movie.count}</AmountCounter>
                   </AmountCounterContainer>
-                  <IconCart src={PlusIcon} onClick={() => dispatch(sumMovie(movie))}/>
+                  <IconCart
+                    src={PlusIcon}
+                    onClick={() => dispatch(sumMovie(movie))}
+                  />
                 </AmountContainer>
                 <SubTotalContainerMobile>
                   <SubTotalSubtitle>SUBTOTAL</SubTotalSubtitle>
-                  <SubTotal>R$ {Number(movie.count * movie.price).toFixed(2)}</SubTotal>
+                  <SubTotal>
+                    R$ {Number(movie.count * movie.price).toFixed(2)}
+                  </SubTotal>
                 </SubTotalContainerMobile>
               </ValueContainer>
             </ProductWrapper>
           </CartMobileContainer>
-        )}
+        ))}
 
         <SeparatorCart />
 
         <FooterMobile>
           <TotalContainerMobile>
             <TotalName>TOTAL</TotalName>
-            <TotalAmount>R$ {(totalPrice).toFixed(2)}</TotalAmount>
+            <TotalAmount>R$ {totalPrice.toFixed(2)}</TotalAmount>
           </TotalContainerMobile>
-          <Button height="40" text="FINALIZAR PEDIDO" width="100%" onClick={handleClick} />
+          <Button
+            height="40"
+            text="FINALIZAR PEDIDO"
+            width="100%"
+            onClick={handleClick}
+          />
         </FooterMobile>
-
       </CartMobileWrapper>
     </>
   )
 }
 
-export {CartMobile}
+export { CartMobile }
