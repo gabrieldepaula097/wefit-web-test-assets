@@ -30,7 +30,7 @@ const Search = () => {
 
   const [noResult, setNoResult] = useState(false)
 
-  const { data: movies, isPending, error } = useFetch('http://localhost:8000/products')
+  const { data: movies, isPending } = useFetch('http://localhost:8000/products')
 
 
   useEffect(() => {
