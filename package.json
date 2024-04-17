@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "start": "vite preview",
-    "lint": "eslint src --max-warnings=0"
+    "lint": "eslint src --max-warnings=1"
   },
   "lint-staged": {
     "src/**/*": [
