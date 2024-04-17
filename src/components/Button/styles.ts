@@ -8,7 +8,7 @@ const ButtonStyled = styled.button<{ height: string; width?: string; }>`
   font-weight: bold;
   height: ${props => props.height}px;
   justify-content: center;
-  width:  ${props => props.width}px;
+  width:  ${props => props.width};
   text-align: center;
   word-wrap: break-word;
   

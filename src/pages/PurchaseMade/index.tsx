@@ -16,7 +16,7 @@ const PurchaseMade = () => {
         <ImgContainer>
           <img src={PurchaseImg} />
         </ImgContainer>
-        <Button height="40" width="157" text="VOLTAR" onClick={handleClick} />
+        <Button height="40" width="157px" text="VOLTAR" onClick={handleClick} />
       </PurchaseContainer>
     </PurchaseWrapper>
 

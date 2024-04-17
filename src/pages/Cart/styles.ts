@@ -108,7 +108,7 @@ const AmountContainer = styled.div`
 `
 const IconCart = styled.img`
   height: 18px;
-  width: 18px;
+  width: 16px;
 `
 
 const AmountCounterContainer = styled.div`
@@ -209,12 +209,4 @@ const TotalAmount = styled.span`
   `}
 `
 
-const Div = styled.div`
-  width: 100%;
-  height: 92px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 16;
-  display: inline-flex;
-`
-export {CartContainer, CartWrapper, HeaderText, HeaderComplement, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, AmountContainer, IconCart, AmountCounterContainer, AmountCounter, SubTotal, SubTotalContainer, TrashContainer, SeparatorCart, FooterCart, TotalContainer, TotalName, TotalAmount, Row, AmountText, SubTotalText, Div}
+export {CartContainer, CartWrapper, HeaderText, HeaderComplement, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, AmountContainer, IconCart, AmountCounterContainer, AmountCounter, SubTotal, SubTotalContainer, TrashContainer, SeparatorCart, FooterCart, TotalContainer, TotalName, TotalAmount, Row, AmountText, SubTotalText}

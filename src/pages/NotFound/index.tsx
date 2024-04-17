@@ -16,7 +16,7 @@ const NotFound = () => {
           <img src={NotFoundImg} />
         </ImgContainer>
         <Separator />
-        <Button height="40" width="175" text="Recarregar página" onClick={sendToHome}>
+        <Button height="40" width="175px" text="Recarregar página" onClick={sendToHome}>
         </Button>
       </ContainerNotFound>
     </WrapperNotFound>

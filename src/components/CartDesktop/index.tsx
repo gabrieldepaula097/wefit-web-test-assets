@@ -1,9 +1,9 @@
 import { AmountContainer, AmountCounter, AmountCounterContainer, AmountText, CartContainer, FooterCart, HeaderComplement, HeaderText, IconCart, ProductContainer, ProductImage, ProductInfo, ProductName, ProductPrice, Row, SeparatorCart, SubTotal, SubTotalContainer, SubTotalText, TotalAmount, TotalContainer, TotalName, TrashContainer } from "pages/Cart/styles"
 import { useSelector } from "react-redux"
 import { RootState } from "redux"
-import MinusIcon from '../../assets/minus.svg';
-import PlusIcon from '../../assets/plus.svg';
-import TrashIcon from '../../assets/trash.svg'
+import MinusIcon from 'assets/minus.svg';
+import PlusIcon from 'assets/plus.svg';
+import TrashIcon from 'assets/trash.svg'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { purchaseCompleted, removeMovie, subMovie, sumMovie } from "redux/MovieReducer";
@@ -74,7 +74,7 @@ const CartDesktop = () => {
         <SeparatorCart />
 
         <FooterCart>
-          <Button height="34" text="FINALIZAR PEDIDO" width="173" onClick={handleClick} />
+          <Button height="34" text="FINALIZAR PEDIDO" width="173px" onClick={handleClick} />
             <TotalContainer>
               <TotalName>TOTAL</TotalName>
               <TotalAmount>R$ {(totalPrice).toFixed(2)}</TotalAmount>
