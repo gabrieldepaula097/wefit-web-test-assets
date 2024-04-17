@@ -1,8 +1,6 @@
-To run project
-  - `yarn && yarn install`
-
-🔨 Commands
-- `yarn dev`: runs your application on `localhost:3000`
-- `yarn build`: creates the production build version
-- `yarn start`: starts a simple server with the build production code
-- `yarn lint`: runs the linter in all components and pages
+To run project locally:
+  - Need to install Node v18.20.2
+  - Open two terminals in the project root
+  - Run `yarn && yarn install && yarn dev` on the first one
+  - Run `cd ecommerce-assets/ && json-server --watch server.json --port 8000` on the second one
+  - The url to access the application will be <https://localhost:3000>
