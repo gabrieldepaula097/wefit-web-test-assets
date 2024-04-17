@@ -9,12 +9,15 @@ import { useLocation, useNavigationType, useSearchParams } from "react-router-do
 import useFetch from "api/useFetch";
 import Spinner from "components/Spinner";
 import NotFound from "pages/NotFound";
+import useDeviceDetection from 'utils/useDeviceDetection';
 
 export type Movie = {
   title: string; price: number; id: string; image: string
 }
 
 const Search = () => {
+  const isMobile = useDeviceDetection();
+  
   const dispatch = useDispatch();
   const location = useLocation();
   const navType = useNavigationType();
@@ -97,7 +100,7 @@ const Search = () => {
       </SearchBarWrapper>
       {(isPending || filteredMovies?.length < 1 && !noResult) && <Spinner />}
       {movies && filteredMovies && <SearchResult>
-        <MoviesContainer>
+        <MoviesContainer isMobile={isMobile}>
         {filteredMovies && filteredMovies.map((movie: Movie) => 
           <MovieCard key={movie.id} className="movie">
             <MovieInfo>

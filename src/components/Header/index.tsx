@@ -2,6 +2,7 @@ import { Cart, CartItems, CartText, Container, Label, Name } from "./styles"
 import CartIcon from '@/assets/cart.svg'
 import { useSelector } from "react-redux";
 import { RootState } from "redux";
+import useDeviceDetection from 'utils/useDeviceDetection';
 
 export type HeaderProps = {
   name?: string
@@ -9,6 +10,7 @@ export type HeaderProps = {
 
 const Header = () => {
   const totalItems = useSelector((state: RootState) => state.cart.totalItems)
+  const isMobile = useDeviceDetection();
 
   return (
     <Container>
@@ -18,14 +20,14 @@ const Header = () => {
 
       <Cart to="/cart">
         <Label>
-          <CartText>
+          {!isMobile && <CartText>
             Meu Carrinho
-          </CartText>
+          </CartText>}
           <CartItems>
             {totalItems} itens
           </CartItems>
         </Label>
-        <img src={CartIcon} />
+        <img src={CartIcon}  />
       </Cart>
     </Container>
   )

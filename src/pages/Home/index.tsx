@@ -9,9 +9,12 @@ import { addMovie, setSearchTerm, sumMovie } from 'redux/MovieReducer';
 import { RootState } from 'redux';
 import { useState } from 'react';
 import { Movie } from 'components/Search';
+import useDeviceDetection from 'utils/useDeviceDetection';
 
 
 const Home = () => {
+  const isMobile = useDeviceDetection();
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const movieList = useSelector((state: RootState) => state.cart.movies)
@@ -57,7 +60,7 @@ const Home = () => {
         <SearchIcon src={iconSearch} onClick={() => handleFilter()} />
       </SearchBarWrapper>
       <SearchResult>
-        <MoviesContainer>
+        <MoviesContainer isMobile={isMobile}>
         {movies && movies.map((movie: Movie) => 
           <MovieCard key={movie.id} className="movie">
             <MovieInfo>

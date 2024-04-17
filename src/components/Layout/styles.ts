@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components'
 
-const Wrapper = styled.div`
+
+const Wrapper = styled.div<{isMobile: boolean}>`
   display: flex;
   flex-direction: column;
-  padding: 0 180px;
+  padding: ${props => props.isMobile ? '0' : '0 180px'};
   justify-content: flex-start;
   align-items: center;
 `

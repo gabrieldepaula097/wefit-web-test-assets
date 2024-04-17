@@ -8,7 +8,7 @@ import theme from 'styles/theme'
 import Layout from './components/Layout/index'
 import NotFound from 'pages/NotFound';
 import Home from 'pages/Home';
-import Cart from 'components/Cart';
+import Cart from 'pages/Cart';
 import PurchaseMade from 'pages/PurchaseMade';
 import { useSelector } from 'react-redux';
 import { RootState } from 'redux';
