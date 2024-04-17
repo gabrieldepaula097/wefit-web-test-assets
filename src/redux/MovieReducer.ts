@@ -1,16 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Movie } from 'components/Search'
-
-export interface IMovie {
-  title: string
-  price: number
-  id: string
-  image: string
-  count: number
-}
-
-export type FilteredMovies = Array<Movie> | undefined
+import { FilteredMovies, IMovie } from 'types/types'
 
 export interface MovieInitialState {
   movies: IMovie[]

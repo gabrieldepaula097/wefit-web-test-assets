@@ -1,4 +1,4 @@
-interface IMovie {
+export interface IMovie {
   title: string
   price: number
   id: string
@@ -6,13 +6,22 @@ interface IMovie {
   count: number
 }
 
-type MoviesState = {
+export type Movie = {
+  title: string
+  price: number
+  id: string
+  image: string
+}
+
+export type FilteredMovies = Array<Movie> | undefined
+
+export type MoviesState = {
   movies: IMovie[]
 }
 
-type MovieAction = {
+export type MovieAction = {
   type: string
   movie: IMovie
 }
 
-type DispatchType = (args: MovieAction) => MovieAction
+export type DispatchType = (args: MovieAction) => MovieAction

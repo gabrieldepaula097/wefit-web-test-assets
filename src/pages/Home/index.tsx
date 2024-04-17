@@ -23,13 +23,13 @@ import {
   SearchResult,
   SearchWrapper
 } from '../../components/Search/styles'
-import { Movie } from 'components/Search'
 import Spinner from 'components/Spinner'
 
 import useDeviceDetection from 'utils/useDeviceDetection'
 
 import iconAddToCart from '../../assets/addToCart.svg'
 import iconSearch from '../../assets/search.svg'
+import { IMovie, Movie } from 'types/types'
 
 const Home = () => {
   const isMobile = useDeviceDetection()

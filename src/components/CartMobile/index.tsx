@@ -41,6 +41,7 @@ import {
   TotalContainerMobile,
   ValueContainer
 } from './styles'
+import { IMovie } from 'types/types'
 
 const CartMobile = () => {
   const dispatch = useDispatch()

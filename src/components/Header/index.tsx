@@ -7,10 +7,6 @@ import useDeviceDetection from 'utils/useDeviceDetection'
 
 import { Cart, CartItems, CartText, Container, Label, Name } from './styles'
 
-export type HeaderProps = {
-  name?: string
-}
-
 const Header = () => {
   const totalItems = useSelector((state: RootState) => state.cart.totalItems)
   const isMobile = useDeviceDetection()

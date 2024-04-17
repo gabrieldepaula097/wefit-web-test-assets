@@ -41,13 +41,7 @@ import {
   setSearchTerm,
   sumMovie
 } from '../../redux/MovieReducer'
-
-export type Movie = {
-  title: string
-  price: number
-  id: string
-  image: string
-}
+import { IMovie, Movie } from 'types/types'
 
 const Search = () => {
   const isMobile = useDeviceDetection()
@@ -97,9 +91,11 @@ const Search = () => {
       )
     } else {
       const search = searchParams.get('search')
-      filtered = movies?.filter((movie: Movie) =>
-        movie.title.toUpperCase().includes(search.toUpperCase())
-      )
+      if(search){
+        filtered = movies?.filter((movie: Movie) =>
+          movie.title.toUpperCase().includes(search.toUpperCase())
+        )
+      }
     }
     if (filtered?.length === 0) {
       setNoResult(true)
