@@ -90,6 +90,13 @@ const Search = () => {
     return dispatch(addMovie(movieToSend)) 
   }
 
+  const getMovieCount = (id: string) => {
+    const movie = movieList?.find((movie: IMovie) => movie.id === id)
+    if(movie){
+      return movie.count
+    }
+    return 0
+  }
 
   return (
     <>
@@ -111,7 +118,7 @@ const Search = () => {
             <AddToCart onClick={() => handleClick(movie)}>
               <IconContainer>
                 <IconButton src={iconAddToCart} />
-                <CartCounter>0</CartCounter>
+                <CartCounter>{getMovieCount(movie.id)}</CartCounter>
               </IconContainer>
               ADICIONAR AO CARRINHO
             </AddToCart>
