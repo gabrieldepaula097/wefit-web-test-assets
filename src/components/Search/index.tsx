@@ -33,6 +33,8 @@ import {
   SearchWrapper
 } from './styles'
 
+import { IMovie, Movie } from 'types/types'
+
 import iconAddToCart from '../../assets/addToCart.svg'
 import iconSearch from '../../assets/search.svg'
 import {
@@ -41,7 +43,6 @@ import {
   setSearchTerm,
   sumMovie
 } from '../../redux/MovieReducer'
-import { IMovie, Movie } from 'types/types'
 
 const Search = () => {
   const isMobile = useDeviceDetection()
@@ -91,7 +92,7 @@ const Search = () => {
       )
     } else {
       const search = searchParams.get('search')
-      if(search){
+      if (search) {
         filtered = movies?.filter((movie: Movie) =>
           movie.title.toUpperCase().includes(search.toUpperCase())
         )

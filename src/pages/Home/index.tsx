@@ -27,9 +27,10 @@ import Spinner from 'components/Spinner'
 
 import useDeviceDetection from 'utils/useDeviceDetection'
 
+import { IMovie, Movie } from 'types/types'
+
 import iconAddToCart from '../../assets/addToCart.svg'
 import iconSearch from '../../assets/search.svg'
-import { IMovie, Movie } from 'types/types'
 
 const Home = () => {
   const isMobile = useDeviceDetection()

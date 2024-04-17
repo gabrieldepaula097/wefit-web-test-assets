@@ -40,6 +40,7 @@ import {
 } from 'pages/Cart/styles'
 
 import Button from 'components/Button'
+
 import { IMovie } from 'types/types'
 
 const CartDesktop = () => {

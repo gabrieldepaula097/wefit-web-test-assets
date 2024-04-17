@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { Movie } from 'components/Search'
+import { Movie } from 'types/types'
 
 interface UseFetchResult {
   data: Array<Movie> | undefined

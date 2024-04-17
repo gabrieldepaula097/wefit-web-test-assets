@@ -1,11 +1,6 @@
 import { ButtonStyled } from './styles'
 
-export type ButtonProps = {
-  height: string
-  text: string
-  width: string
-  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
-}
+import { ButtonProps } from 'types/types'
 
 const Button = ({ height, text, width, onClick }: ButtonProps) => {
   return (

@@ -13,6 +13,13 @@ export type Movie = {
   image: string
 }
 
+export type ButtonProps = {
+  height: string
+  text: string
+  width: string
+  onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
+}
+
 export type FilteredMovies = Array<Movie> | undefined
 
 export type MoviesState = {
