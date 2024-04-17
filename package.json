@@ -4,8 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "start": "vite preview",
+    "start": "vite & cd ecommerce-assets/ && json-server --watch server.json --port 8000",
     "lint": "eslint src --max-warnings=1"
   },
   "lint-staged": {
