@@ -46,7 +46,7 @@ const CartText = styled.span`
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.semiBold};
-    wordwrap: break-word;
+    word-wrap: break-word;
   `}
 `
 

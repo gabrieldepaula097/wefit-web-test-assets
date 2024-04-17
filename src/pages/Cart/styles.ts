@@ -16,20 +16,24 @@ const CartWrapper = styled.div`
 `
 
 const CartContainer = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 3fr repeat(3, 2fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 16px;
+  ${({ theme }) => css`
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr repeat(3, 2fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: ${theme.spacings.medium};
+  `}
 `
 
 const Row = styled.div`
-  display: grid;
-  grid-template-columns: 3fr repeat(3, 2fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 16px;
-  grid-row-gap: 16px;
-  width: 100%;
+  ${({ theme }) => css`
+    display: grid;
+    grid-template-columns: 3fr repeat(3, 2fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: ${theme.spacings.medium};
+    grid-row-gap: ${theme.spacings.medium};
+    width: 100%;
+  `}
 `
 const HeaderText = styled.span`
   ${({ theme }) => css`

@@ -1,44 +1,54 @@
 import styled, { css } from 'styled-components'
 
 const CartMobileWrapper = styled.div`
-  width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 16px;
-  display: inline-flex;
-  flex-direction: column;
+  ${({ theme }) => css`
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: ${theme.spacings.medium};
+    display: inline-flex;
+    flex-direction: column;
+  `}
 `
 
 const CartMobileContainer = styled.div`
-  width: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 16px;
-  display: inline-flex;
+  ${({ theme }) => css`
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: ${theme.spacings.medium};
+    display: inline-flex;
+  `}
 `
 
 const ProductWrapper = styled.div`
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 16px;
-  display: inline-flex;
-  width: 100%;
-  height: 82px;
+  ${({ theme }) => css`
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: ${theme.spacings.medium};
+    display: inline-flex;
+    width: 100%;
+    height: 82px;
+  `}
 `
 const ProductPriceContainer = styled.div`
-  justify-content: flex-start;
-  align-items: center;
-  gap: 16px;
-  display: flex;
+  ${({ theme }) => css`
+    justify-content: flex-start;
+    align-items: center;
+    gap: ${theme.spacings.medium};
+    display: flex;
+  `}
 `
 const ProductContainer = styled.div`
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 16px;
-  display: inline-flex;
-  width: 100%;
-  flex: 1 1 0;
+  ${({ theme }) => css`
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: ${theme.spacings.medium};
+    display: inline-flex;
+    width: 100%;
+    flex: 1 1 0;
+  `}
 `
 
 const ProductNameMobile = styled.span`
@@ -60,17 +70,21 @@ const SubTotalContainerMobile = styled.div`
 `
 
 const SubTotalSubtitle = styled.span`
-  color: #999999;
-  font-size: 12px;
-  font-weight: bold;
+  ${({ theme }) => css`
+    color: ${theme.colors.grey};
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: bold;
+  `}
 `
 
 const ValueContainer = styled.div`
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  display: flex;
-  width: 100%;
+  ${({ theme }) => css`
+    justify-content: space-between;
+    align-items: center;
+    gap: ${theme.spacings.medium};
+    display: flex;
+    width: 100%;
+  `}
 `
 
 const ProductImageMobile = styled.img`
@@ -79,12 +93,14 @@ const ProductImageMobile = styled.img`
 `
 
 const FooterMobile = styled.div`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
-  display: inline-flex;
-  width: 100%;
+  ${({ theme }) => css`
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: ${theme.spacings.medium};
+    display: inline-flex;
+    width: 100%;
+  `}
 `
 const TotalContainerMobile = styled.div`
   ${({ theme }) => css`
