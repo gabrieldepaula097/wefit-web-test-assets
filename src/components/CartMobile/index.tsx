@@ -22,7 +22,6 @@ import {
   SeparatorCart,
   SubTotal,
   TotalAmount,
-  TotalContainer,
   TotalName
 } from 'pages/Cart/styles'
 
