@@ -107,6 +107,7 @@ const AmountContainer = styled.div`
   justify-content: flex-start;
 `
 const IconCart = styled.img`
+  cursor: pointer;
   height: 18px;
   width: 16px;
 `

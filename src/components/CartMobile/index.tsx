@@ -43,33 +43,34 @@ const CartMobile = () => {
 
   return (
     <>
-    {movieList.map((movie: IMovie) =>
-      <CartMobileWrapper key={movie.id}>
-        <CartMobileContainer>
-          <ProductImageMobile src={movie.image} />
-          <ProductWrapper>
-            <ProductContainer>
-              <ProductNameMobile>{movie.title}</ProductNameMobile>
-              <ProductPriceContainer>
-                <ProductPrice>R$ {(movie.price).toFixed(2)}</ProductPrice>
-              </ProductPriceContainer>
-              <IconCart src={TrashIcon} onClick={() => dispatch(removeMovie(movie))} />
-            </ProductContainer>
-            <ValueContainer>
-              <AmountContainer>
-                <IconCart src={MinusIcon} onClick={() => handleMinus(movie)} />
-                <AmountCounterContainer>
-                  <AmountCounter>{movie.count}</AmountCounter>
-                </AmountCounterContainer>
-                <IconCart src={PlusIcon} onClick={() => dispatch(sumMovie(movie))}/>
-              </AmountContainer>
-              <SubTotalContainerMobile>
-                <SubTotalSubtitle>SUBTOTAL</SubTotalSubtitle>
-                <SubTotal>R$ {Number(movie.count * movie.price).toFixed(2)}</SubTotal>
-              </SubTotalContainerMobile>
-            </ValueContainer>
-          </ProductWrapper>
-        </CartMobileContainer>
+      <CartMobileWrapper>
+        {movieList.map((movie: IMovie) =>
+          <CartMobileContainer key={movie.id}>
+            <ProductImageMobile src={movie.image} />
+            <ProductWrapper>
+              <ProductContainer>
+                <ProductNameMobile>{movie.title}</ProductNameMobile>
+                <ProductPriceContainer>
+                  <ProductPrice>R$ {(movie.price).toFixed(2)}</ProductPrice>
+                </ProductPriceContainer>
+                <IconCart src={TrashIcon} onClick={() => dispatch(removeMovie(movie))} />
+              </ProductContainer>
+              <ValueContainer>
+                <AmountContainer>
+                  <IconCart src={MinusIcon} onClick={() => handleMinus(movie)} />
+                  <AmountCounterContainer>
+                    <AmountCounter>{movie.count}</AmountCounter>
+                  </AmountCounterContainer>
+                  <IconCart src={PlusIcon} onClick={() => dispatch(sumMovie(movie))}/>
+                </AmountContainer>
+                <SubTotalContainerMobile>
+                  <SubTotalSubtitle>SUBTOTAL</SubTotalSubtitle>
+                  <SubTotal>R$ {Number(movie.count * movie.price).toFixed(2)}</SubTotal>
+                </SubTotalContainerMobile>
+              </ValueContainer>
+            </ProductWrapper>
+          </CartMobileContainer>
+        )}
 
         <SeparatorCart />
 
@@ -82,7 +83,6 @@ const CartMobile = () => {
         </FooterMobile>
 
       </CartMobileWrapper>
-      )}
     </>
   )
 }
